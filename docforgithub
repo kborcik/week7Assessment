@@ -1,0 +1,25 @@
+
+
+insert 3.3 μs       tiny
+insert 7.3 μs       small
+insert 93.8 μs      medium  
+insert 6.4174 ms    large   
+insert 730.0943 ms  extra large
+
+
+append 9.3 μs       tiny
+append 7.2 μs       small
+append 25.6 μs      medium
+append 105.7 μs     large
+append 2.5233 ms    extra large
+
+
+insert is scaling at an exponential rate.  As the array is getting larger the runtime is rapidly increasing.
+if scaling the two functions append would be the better choice at is slower runtime at higher scale. it does this because
+of the nature of unshift vs push.  push is adding the value into the array then reassigning each new value a new index after
+adding the new one.  
+
+unshift avoids this tedious extra step by not adding a memory block at the end shifting everything. it instead simply adds the 
+new piece of information and the old to a new block and adjusts the length. it other words it doesnt shift everything. it does 
+the task while "un-shifting"
+
